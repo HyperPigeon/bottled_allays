@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.hyper_pigeon.bottled_allays.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "server": [
+    "AllayEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

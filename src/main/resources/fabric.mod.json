@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "bottled_allays",
+  "version": "${version}",
+  "name": "BottledAllays",
+  "description": "A mod that lets you bottle allays and carry them around.",
+  "authors": [
+    "CyborgPigeon"
+  ],
+  "contact": {
+    "repo": "https://github.com/HyperPigeon"
+  },
+  "license": "MIT",
+  "icon": "assets/bottled_allays/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      "net.hyper_pigeon.bottled_allays.BottledAllays"
+    ]
+  },
+  "mixins": [
+    "bottled_allays.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.19"
+  }
+}
