@@ -28,14 +28,17 @@ public abstract class AllayEntityMixin extends PathAwareEntity {
 
     @Inject(method = "interactMob",at = @At("HEAD"))
     private void bottleAllay(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir){
-        ItemStack itemStack = player.getStackInHand(hand);
-        if(itemStack.getItem() == Items.GLASS_BOTTLE && player.isSneaking()){
-            itemStack.decrement(1);
-            ItemStack newItemStack = new ItemStack(BottledAllays.BOTTLE_OF_ALLAY);
-            writeCustomDataToNbt(newItemStack.getOrCreateNbt());
-            player.giveItemStack(newItemStack);
-            this.discard();
+        if(!this.world.isClient) {
+            ItemStack itemStack = player.getStackInHand(hand);
+            if(itemStack.getItem() == Items.GLASS_BOTTLE && player.isSneaking()){
+                itemStack.decrement(1);
+                ItemStack newItemStack = new ItemStack(BottledAllays.BOTTLE_OF_ALLAY);
+                writeCustomDataToNbt(newItemStack.getOrCreateNbt());
+                player.giveItemStack(newItemStack);
+                this.discard();
+            }
         }
+
     }
 
 

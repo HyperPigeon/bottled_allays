@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "icon": "assets/bottled_allays/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
-    "server": [
+    "main": [
       "net.hyper_pigeon.bottled_allays.BottledAllays"
     ]
   },
