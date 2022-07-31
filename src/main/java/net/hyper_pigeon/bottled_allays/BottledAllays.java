@@ -9,7 +9,7 @@ import net.minecraft.util.registry.Registry;
 
 public class BottledAllays implements ModInitializer {
 
-    public static final BottledAllayItem BOTTLE_OF_ALLAY = new BottledAllayItem(new Item.Settings().group(ItemGroup.MISC));
+    public static final BottledAllayItem BOTTLE_OF_ALLAY = new BottledAllayItem(new Item.Settings().group(ItemGroup.MISC).maxCount(1));
 
     @Override
     public void onInitialize() {

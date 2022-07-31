@@ -1,6 +1,8 @@
 package net.hyper_pigeon.bottled_allays.item;
 
 import eu.pb4.polymer.api.item.PolymerItem;
+import eu.pb4.polymer.api.item.PolymerItemUtils;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,8 +32,18 @@ public class BottledAllayItem extends Item implements PolymerItem {
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 
+
+
     @Override
     public Item getPolymerItem(ItemStack itemStack, @Nullable ServerPlayerEntity player) {
-        return Items.EXPERIENCE_BOTTLE;
+        return Items.POTION;
     }
+
+    @Override
+    public ItemStack getPolymerItemStack(ItemStack itemStack, ServerPlayerEntity player) {
+        ItemStack out = PolymerItemUtils.createItemStack(itemStack, player);
+        out.addEnchantment(Enchantments.BINDING_CURSE, 0);
+        return out;
+    }
+
 }
