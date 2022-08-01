@@ -9,6 +9,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -28,7 +30,6 @@ public class BottledAllayItem extends Item implements PolymerItem {
         world.spawnEntity(allayEntity);
         user.getStackInHand(hand).decrement(1);
         user.setStackInHand(hand, new ItemStack(Items.GLASS_BOTTLE));
-
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 
@@ -36,7 +37,7 @@ public class BottledAllayItem extends Item implements PolymerItem {
 
     @Override
     public Item getPolymerItem(ItemStack itemStack, @Nullable ServerPlayerEntity player) {
-        return Items.POTION;
+        return Items.DRAGON_BREATH;
     }
 
     @Override
