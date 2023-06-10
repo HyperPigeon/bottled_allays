@@ -1,7 +1,8 @@
 package net.hyper_pigeon.bottled_allays.item;
 
-import eu.pb4.polymer.api.item.PolymerItem;
-import eu.pb4.polymer.api.item.PolymerItemUtils;
+import eu.pb4.polymer.core.api.item.PolymerItem;
+import eu.pb4.polymer.core.api.item.PolymerItemUtils;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AllayEntity;
@@ -39,7 +40,7 @@ public class BottledAllayItem extends Item implements PolymerItem {
     }
 
     @Override
-    public ItemStack getPolymerItemStack(ItemStack itemStack, ServerPlayerEntity player) {
+    public ItemStack getPolymerItemStack(ItemStack itemStack, TooltipContext context, ServerPlayerEntity player)  {
         ItemStack out = PolymerItemUtils.createItemStack(itemStack, player);
         out.addEnchantment(Enchantments.BINDING_CURSE, 0);
         return out;
