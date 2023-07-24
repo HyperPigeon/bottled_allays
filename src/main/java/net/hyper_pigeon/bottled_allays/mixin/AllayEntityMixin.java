@@ -28,7 +28,7 @@ public abstract class AllayEntityMixin extends PathAwareEntity {
 
     @Inject(method = "interactMob",at = @At("HEAD"), cancellable = true)
     private void bottleAllay(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir){
-        if(!this.world.isClient) {
+        if(!this.getWorld().isClient) {
             ItemStack itemStack = player.getStackInHand(hand);
             if(itemStack.getItem() == Items.GLASS_BOTTLE && player.isSneaking()){
                 ItemStack newItemStack = new ItemStack(BottledAllays.BOTTLE_OF_ALLAY);
