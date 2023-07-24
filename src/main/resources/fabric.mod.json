@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "bottled_allays",
   "version": "${version}",
-  "name": "BottledAllays",
+  "name": "Bottled Allays",
   "description": "A mod that lets you bottle allays and carry them around.",
   "authors": [
     "CyborgPigeon"
