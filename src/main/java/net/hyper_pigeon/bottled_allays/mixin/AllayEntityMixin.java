@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -33,6 +34,8 @@ public abstract class AllayEntityMixin extends PathAwareEntity {
             if(itemStack.getItem() == Items.GLASS_BOTTLE && player.isSneaking()){
                 ItemStack newItemStack = new ItemStack(BottledAllays.BOTTLE_OF_ALLAY);
                 writeCustomDataToNbt(newItemStack.getOrCreateNbt());
+                if (this.getName() != null)
+                    newItemStack.getOrCreateNbt().putString("allay_name", Text.Serializer.toJson(this.getName()));
                 player.giveItemStack(newItemStack);
                 itemStack.decrement(1);
                 this.discard();

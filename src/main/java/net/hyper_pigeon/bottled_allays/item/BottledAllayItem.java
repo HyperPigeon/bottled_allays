@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -22,11 +23,21 @@ public class BottledAllayItem extends Item implements PolymerItem {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         AllayEntity allayEntity = EntityType.ALLAY.create(world);
+        ItemStack allayBottle = user.getStackInHand(hand);
+
         assert allayEntity != null;
         allayEntity.readCustomDataFromNbt(user.getStackInHand(hand).getOrCreateNbt());
         allayEntity.refreshPositionAndAngles(user.getBlockPos(),0,0);
         world.spawnEntity(allayEntity);
-        user.getStackInHand(hand).decrement(1);
+
+        if (allayBottle.getOrCreateNbt().contains("allay_name")) {
+            NbtCompound allayData = new NbtCompound();
+            allayEntity.writeNbt(allayData);
+            allayData.putString("CustomName", allayBottle.getNbt().getString("allay_name"));
+            allayEntity.readNbt(allayData);
+        }
+
+        allayBottle.decrement(1);
         user.setStackInHand(hand, new ItemStack(Items.GLASS_BOTTLE));
         return TypedActionResult.success(user.getStackInHand(hand));
     }
